@@ -1,0 +1,46 @@
+<rviz>
+  <displays>
+    <display type="MarkerArray">
+      <topic>/visualization_marker_array</topic>
+      <namespace/>
+      <include_marker_types>
+        -1
+      </include_marker_types>
+      <marker_array>
+        <scale>
+          <x>0.1</x>
+          <y>0.1</y>
+          <z>0.1</z>
+        </scale>
+        <pose>
+          <position>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+          </position>
+          <orientation>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+            <w>1.0</w>
+          </orientation>
+        </pose>
+        <id>0</id>
+        <type>3</type>
+        <action>0</action>
+        <lifetime>
+          <sec>0</sec>
+          <nanosec>0</nanosec>
+        </lifetime>
+        <frame_locked>0</frame_locked>
+        <color>
+          <r>1.0</r>
+          <g>0.0</g>
+          <b>0.0</b>
+          <a>1.0</a>
+        </color>
+      </marker_array>
+    </display>
+  </displays>
+</rviz>
+

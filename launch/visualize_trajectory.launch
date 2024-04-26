@@ -1,0 +1,7 @@
+<launch>
+    <arg name="filename" default="trajectory.csv" />
+    <node name="trajectory_reader_publisher" pkg="trajectory_visualization_storage" type="TrajectoryReaderPublisher" output="screen">
+        <param name="filename" value="$(arg filename)" />
+    </node>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find trajectory_visualization_storage)/rviz/rviz_config.rviz" output="screen" />
+</launch>
