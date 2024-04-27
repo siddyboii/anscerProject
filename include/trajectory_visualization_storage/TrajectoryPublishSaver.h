@@ -27,6 +27,8 @@ private:
     // void pathCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
     //void pathCallback(const sensor_msgs::JointState::ConstPtr& msg);
     void pathCallback(const nav_msgs::Odometry::ConstPtr& msg);
+    double duration_;
+    ros::Time start_time_;
 };
 
 #endif // TRAJECTORY_PUBLISHER_SAVER_H

@@ -3,7 +3,7 @@
 
 TrajectoryPublisherSaver::TrajectoryPublisherSaver()
     : nh_("~"),
-      path_sub_(nh_.subscribe("/odom", 1, &TrajectoryPublisherSaver::pathCallback, this)),// i think the issue lies here and i'm working on it
+      path_sub_(nh_.subscribe("/odom", 1, &TrajectoryPublisherSaver::pathCallback, this)),
       marker_pub_(nh_.advertise<visualization_msgs::MarkerArray>("visualization_marker_array", 1)),
       save_trajectory_srv_(nh_.advertiseService("save_trajectory", &TrajectoryPublisherSaver::saveTrajectoryCallback, this)) {
     marker_array_.markers.resize(1);
@@ -20,6 +20,13 @@ TrajectoryPublisherSaver::TrajectoryPublisherSaver()
     marker_array_.markers[0].color.b = 0.0;
     marker_array_.markers[0].color.a = 1.0;
 
+    nh_.param("duration", duration_);
+    //ROS_INFO("Setting trajectory duration to %f seconds", duration_);
+
+    start_time_ = ros::Time::now();
+    ROS_INFO("Start time: %f", start_time_.toSec());
+
+
     // std::string filename = req.filename + ".csv";
     // trajectory_file_.open(filename);
     // if (!trajectory_file_.is_open()) {
@@ -32,6 +39,12 @@ TrajectoryPublisherSaver::TrajectoryPublisherSaver()
 }
 
 void TrajectoryPublisherSaver::pathCallback(const nav_msgs::Odometry::ConstPtr& msg) {
+    
+    if(ros::Time::now() - start_time_ > ros::Duration(duration_)){
+        return;
+    }
+
+
     latest_pose_.header = msg->header;
     latest_pose_.pose.position = msg->pose.pose.position;
     latest_pose_.pose.orientation = msg->pose.pose.orientation;
