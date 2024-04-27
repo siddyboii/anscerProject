@@ -3,7 +3,7 @@
 
 TrajectoryPublisherSaver::TrajectoryPublisherSaver()
     : nh_("~"),
-      path_sub_(nh_.subscribe("/joint_states", 1, &TrajectoryPublisherSaver::pathCallback, this)),// i think the issue lies here and i'm working on it
+      path_sub_(nh_.subscribe("/odom", 1, &TrajectoryPublisherSaver::pathCallback, this)),// i think the issue lies here and i'm working on it
       marker_pub_(nh_.advertise<visualization_msgs::MarkerArray>("visualization_marker_array", 1)),
       save_trajectory_srv_(nh_.advertiseService("save_trajectory", &TrajectoryPublisherSaver::saveTrajectoryCallback, this)) {
     marker_array_.markers.resize(1);
@@ -31,8 +31,10 @@ TrajectoryPublisherSaver::TrajectoryPublisherSaver()
     // trajectory_file_ << "x,y,z,qx,qy,qz,qw,timestamp" << std::endl;
 }
 
-void TrajectoryPublisherSaver::pathCallback(const geometry_msgs::PoseStamped::ConstPtr& msg) {
-    latest_pose_ = *msg;
+void TrajectoryPublisherSaver::pathCallback(const nav_msgs::Odometry::ConstPtr& msg) {
+    latest_pose_.header = msg->header;
+    latest_pose_.pose.position = msg->pose.pose.position;
+    latest_pose_.pose.orientation = msg->pose.pose.orientation;
     marker_array_.markers[0].pose = latest_pose_.pose;
     marker_pub_.publish(marker_array_);
     if (trajectory_file_.is_open()){

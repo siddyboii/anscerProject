@@ -63,6 +63,7 @@ void TrajectoryReaderPublisher::onTimer(const ros::TimerEvent&) {
     visualization_msgs::Marker marker_array;
     // marker_array.markers = trajectory_.markers;
     marker_pub_.publish(marker_array);
+    
 }
 
 void TrajectoryReaderPublisher::loadTrajectory() {
@@ -73,7 +74,7 @@ void TrajectoryReaderPublisher::loadTrajectory() {
 
 int main(int argc, char **argv){
     ros::init(argc,argv, "trajectory_reader_publisher");
-    trajectory_visualization_storage::TrajectoryReaderPublisher trajectory_publisher;
+    trajectory_visualization_storage::TrajectoryReaderPublisher trajectory_reader_publisher;
     ros::spin();
     return 0;
 }

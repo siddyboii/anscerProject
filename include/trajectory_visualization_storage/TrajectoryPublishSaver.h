@@ -3,6 +3,8 @@
 
 #include <ros/ros.h>
 #include <geometry_msgs/PoseStamped.h>
+#include <nav_msgs/Odometry.h>
+#include <sensor_msgs/JointState.h>
 #include <visualization_msgs/MarkerArray.h>
 #include "trajectory_visualization_storage/SaveTrajectory.h"
 #include <fstream>
@@ -22,7 +24,9 @@ private:
     geometry_msgs::PoseStamped latest_pose_;
     visualization_msgs::MarkerArray marker_array_;
     bool saveTrajectoryCallback(trajectory_visualization_storage::SaveTrajectory::Request& req, trajectory_visualization_storage::SaveTrajectory::Response& res);
-    void pathCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
+    // void pathCallback(const geometry_msgs::PoseStamped::ConstPtr& msg);
+    //void pathCallback(const sensor_msgs::JointState::ConstPtr& msg);
+    void pathCallback(const nav_msgs::Odometry::ConstPtr& msg);
 };
 
 #endif // TRAJECTORY_PUBLISHER_SAVER_H

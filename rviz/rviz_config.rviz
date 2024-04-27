@@ -1,46 +1,36 @@
-<rviz>
+<?xml version="1.0" encoding="UTF-8"?>
+<rviz version="1.15.1">
+  <display_type>MarkerArray</display_type>
+  <windows>
+    <window name="/" type="DefaultWindow" bring_to_front="true" toolbar_dock="right" resizable="true" width="100%" height="100%" x="0" y="0" />
+  </windows>
   <displays>
     <display type="MarkerArray">
+      <name>Marker Array Display</name>
       <topic>/visualization_marker_array</topic>
-      <namespace/>
-      <include_marker_types>
-        -1
-      </include_marker_types>
-      <marker_array>
-        <scale>
-          <x>0.1</x>
-          <y>0.1</y>
-          <z>0.1</z>
-        </scale>
-        <pose>
-          <position>
-            <x>0.0</x>
-            <y>0.0</y>
-            <z>0.0</z>
-          </position>
-          <orientation>
-            <x>0.0</x>
-            <y>0.0</y>
-            <z>0.0</z>
-            <w>1.0</w>
-          </orientation>
-        </pose>
-        <id>0</id>
-        <type>3</type>
-        <action>0</action>
-        <lifetime>
-          <sec>0</sec>
-          <nanosec>0</nanosec>
-        </lifetime>
-        <frame_locked>0</frame_locked>
-        <color>
-          <r>1.0</r>
-          <g>0.0</g>
-          <b>0.0</b>
-          <a>1.0</a>
-        </color>
-      </marker_array>
+      <pose>0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000</pose>
+      <frame_locked>false</frame_locked>
+      <lifetime>0.000000</lifetime>
+      <color>
+        <r>1.000000</r>
+        <g>0.000000</g>
+        <b>0.000000</b>
+        <a>1.000000</a>
+      </color>
+      <scale>1 1 1</scale>
+      <id>0</id>
+      <ns/>
+      <type>0</type>
+      <action>0</action>
+      <pose_relative>false</pose_relative>
+      <scale_relative>false</scale_relative>
+      <color_relative>false</color_relative>
+      <frame_transform>
+        <translation>0 0 0</translation>
+        <rotation>0 0 0 1</rotation>
+      </frame_transform>
     </display>
   </displays>
 </rviz>
+
 

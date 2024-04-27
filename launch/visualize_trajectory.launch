@@ -4,4 +4,5 @@
         <param name="filename" value="$(arg filename)" />
     </node>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find trajectory_visualization_storage)/rviz/rviz_config.rviz" output="screen" />
+    <node pkg="tf" type="static_transform_publisher" name="map_to_world" args="0 0 0 0 0 0 map world 100" />
 </launch>
